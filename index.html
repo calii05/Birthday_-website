@@ -1,0 +1,306 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy 18th Birthday</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet" />
+
+<style>
+  /* Reset & base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e0f0ff 0%, #a3c4f3 100%);
+    color: #102a43;
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    max-width: 900px;
+    width: 100%;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    padding: 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Elegant floral subtle background SVG */
+  .container::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -80px;
+    width: 300px;
+    height: 300px;
+    background: url('https://www.svgrepo.com/show/152676/flower.svg') no-repeat center/contain;
+    opacity: 0.07;
+    transform: rotate(15deg);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .container::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: -70px;
+    width: 250px;
+    height: 250px;
+    background: url('https://www.svgrepo.com/show/152676/flower.svg') no-repeat center/contain;
+    opacity: 0.07;
+    transform: rotate(-20deg);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #0a2342;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  section {
+    position: relative;
+    background: #f9fbff;
+    border-radius: 15px;
+    padding: 30px 35px;
+    margin-bottom: 35px;
+    box-shadow: 0 8px 30px rgba(0, 70, 130, 0.1);
+    z-index: 1;
+    transition: box-shadow 0.3s ease;
+  }
+  section:hover {
+    box-shadow: 0 12px 50px rgba(0, 70, 130, 0.18);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #0a2342;
+    border-bottom: 2px solid #a3c4f3;
+    padding-bottom: 8px;
+  }
+
+  p[contenteditable], ol[contenteditable], ul[contenteditable] {
+    background: #fff;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    min-height: 60px;
+    outline-offset: 2px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: text;
+  }
+  p[contenteditable]:focus, ol[contenteditable]:focus, ul[contenteditable]:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 12px #a3c4f3;
+    background: #f0f7ff;
+  }
+  ol[contenteditable] li {
+    margin-bottom: 12px;
+  }
+
+  ul {
+    list-style: disc inside;
+  }
+
+  /* Image styling */
+  img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: 25px;
+    box-shadow: 0 12px 30px rgba(0, 70, 130, 0.15);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    display: block;
+  }
+  img:hover {
+    transform: scale(1.05) rotate(1deg);
+  }
+
+  /* Gallery grid */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  /* Birthday wishes wall */
+  .birthday-wall textarea {
+    width: 100%;
+    min-height: 90px;
+    font-size: 1.1rem;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: 2px solid #a3c4f3;
+    resize: vertical;
+    margin-top: 12px;
+    transition: box-shadow 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+  }
+  .birthday-wall textarea:focus {
+    outline: none;
+    box-shadow: 0 0 12px #4a90e2;
+  }
+
+  .button {
+    background: linear-gradient(45deg, #3467eb, #4a90e2);
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 15px 0;
+    border-radius: 25px;
+    width: 100%;
+    margin-top: 18px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(52, 103, 235, 0.4);
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+  }
+  .button:hover {
+    box-shadow: 0 12px 35px rgba(52, 103, 235, 0.7);
+    background: linear-gradient(45deg, #4a90e2, #3467eb);
+  }
+
+  ul#wishesList {
+    margin-top: 25px;
+    list-style-type: disc;
+    padding-left: 25px;
+    font-size: 1.05rem;
+    color: #2f3e61;
+  }
+  ul#wishesList li {
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container {
+      padding: 25px 20px;
+    }
+    h1 {
+      font-size: 2.4rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+  <h1>Happy 18th Birthday, My Love!</h1>
+
+  <section>
+    <h2>Our Journey</h2>
+    <p contenteditable="true" aria-label="Our Journey Text">From the day I met you to today...</p>
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Our Journey" />
+  </section>
+
+  <section>
+    <h2>Your 18th Birthday Message</h2>
+    <p contenteditable="true" aria-label="Birthday Message">
+      Dearest love, turning 18 is more than just adding a year—it’s the start of new adventures. I’m so grateful to share every moment with you.
+    </p>
+  </section>
+
+  <section>
+    <h2>18 Reasons Why I Love You</h2>
+    <ol contenteditable="true" aria-label="Reasons list" style="min-height: 100px;">
+      <li>Your smile brightens my day.</li>
+      <li>Your kindness is inspiring.</li>
+      <li>You make me laugh every day.</li>
+      <li>You’re strong and brave.</li>
+      <li>You always listen.</li>
+      <li>You care deeply.</li>
+      <li>You support my dreams.</li>
+      <li>Your creativity shines.</li>
+      <li>You’re patient and gentle.</li>
+      <li>You’re honest and true.</li>
+      <li>You love unconditionally.</li>
+      <li>You’re my best friend.</li>
+      <li>You challenge me to grow.</li>
+      <li>You’re beautiful inside and out.</li>
+      <li>You make ordinary moments special.</li>
+      <li>You believe in us.</li>
+      <li>You inspire me to be better.</li>
+      <li>You complete me.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Song Dedications</h2>
+    <ul aria-label="Song Dedications List">
+      <li>Until I Found You – Stephen Sanchez</li>
+      <li>I Choose – Alessia Cara</li>
+      <li>Ikaw Lang – NOBITA</li>
+      <li>Patutunguhan – UDD</li>
+      <li>Pahinga – Ben&Ben</li>
+      <li>Bawat Sandali – Ebe Dancel</li>
+      <li>Papahiram – Cup of Joe</li>
+      <li>Anything 4 U – LANY</li>
+      <li>You – Benny Blanco & Marshmello</li>
+      <li>All the Love Are All About You – December Avenue</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Gallery: All the Beauty I See in You</h2>
+    <div class="gallery" aria-label="Gallery Images">
+      <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 1" />
+      <img src="https://images.unsplash.com/photo-1519682577862-22b62b24e493?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 2" />
+      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 3" />
+      <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=600&q=80" alt="Gallery Image 4" />
+    </div>
+  </section>
+
+  <section class="birthday-wall">
+    <h2>Birthday Wishes Wall</h2>
+    <textarea placeholder="Write your birthday wish here..."></textarea>
+    <button class="button" onclick="addWish()">Add Wish</button>
+    <ul id="wishesList"></ul>
+  </section>
+
+  <section>
+    <h2>The Best Is Yet to Come</h2>
+    <p contenteditable="true" aria-label="Future Message">Looking forward to our beautiful future together...</p>
+  </section>
+</div>
+
+<script>
+  function addWish() {
+    const textarea = document.querySelector('textarea');
+    const wishesList = document.getElementById('wishesList');
+    const wishText = textarea.value.trim();
+    if(wishText) {
+      const li = document.createElement('li');
+      li.textContent = wishText;
+      wishesList.appendChild(li);
+      textarea.value = '';
+    }
+  }
+</script>
+
+</body>
+</html>
